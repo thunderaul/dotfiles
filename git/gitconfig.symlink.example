@@ -8,24 +8,28 @@
 # install this to the correct location by running the project's main `rake`
 # task.
 [user]
-        name = Zach Holman
-        email = your@example.com
+        name = Nicolas Berger
+        email = nicoberger@gmail.com
 [alias]
         co = checkout
         promote = !$ZSH/bin/git-promote
         wtf     = !$ZSH/bin/git-wtf
         rank-contributers = !$ZSH/bin/git-rank-contributers
         count   = !git shortlog -sn
+        unstage = reset HEAD
 [color]
         diff = auto
         status = auto
         branch = auto
+        ui = auto
 [core]
         excludesfile = ~/.gitignore
-        editor = mate -w
-[apply]
-        whitespace = nowarn
+        editor = vim
 [github]
-        user = holman
+        user = nberger
 [mergetool]
         keepBackup = false
+[rerere]
+	enabled = 1
+[push]
+	default = tracking

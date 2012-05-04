@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/usr/share/byobu/keybindings'
+let g:netrw_dirhist_2='/etc/apache2/sites-enabled'
+let g:netrw_dirhist_3='/home/nicolas/proyectos/pyp/repo/app/models/products_mailer'
+let g:netrw_dirhist_4='/home/nicolas/.rvm/gems/ree-1.8.7-2011.03@analytracker2/gems/inherited_resources-1.2.2'
+let g:netrw_dirhist_5='/home/nicolas/.rvm/gems/ree-1.8.7-2011.03@cdo/gems/state_machine-0.10.1'
+let g:netrw_dirhist_6='/home/nicolas/.rvm/gems/ree-1.8.7-2011.03@analytracker2/gems/faker-0.9.5'

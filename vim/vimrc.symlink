@@ -1,85 +1,172 @@
-set noswapfile
+﻿" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
+" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing debian.vim since it alters the value of the
+" 'compatible' option.
 
-" ----------------------------------------------------------------------------
-"  Text Formatting
-" ----------------------------------------------------------------------------
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages available in Debian.
+runtime! debian.vim
 
-set autoindent             " automatic indent new lines
-set smartindent            " be smart about it
-inoremap # X<BS>#
-set nowrap                 " do not wrap lines
-set softtabstop=2          " yep, two
-set shiftwidth=2           " ..
-set tabstop=4
-set expandtab              " expand tabs to spaces
-set nosmarttab             " fuck tabs
-set formatoptions+=n       " support for numbered/bullet lists
-"set textwidth=80           " wrap at 80 chars by default
-set virtualedit=block      " allow virtual edit in visual block ..
+" Uncomment the next line to make Vim more Vi-compatible
+" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
+" options, so any other options should be set AFTER setting 'compatible'.
+"set compatible
 
-" ----------------------------------------------------------------------------
-"  Remapping
-" ----------------------------------------------------------------------------
+" Vim5 and later versions support syntax highlighting. Uncommenting the next
+" line enables syntax highlighting by default.
+syntax on
 
-" lead with ,
-let mapleader = ","
+" If using a dark background within the editing area and syntax highlighting
+" turn on this option as well
+"set background=dark
 
-" exit to normal mode with 'jj'
-inoremap jj <ESC>
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
 
+" Uncomment the following to have Vim load indentation rules according to the
+" detected filetype. Per default Debian Vim only load filetype specific
+" plugins.
+if has("autocmd")
+  filetype on
+  filetype indent on
+  filetype plugin on
+endif
 
-" reflow paragraph with Q in normal and visual mode
-nnoremap Q gqap
-vnoremap Q gq
+call pathogen#infect() 
 
-" sane movement with wrap turned on
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+set showcmd		" Show (partial) command in status line.
+set showmatch	" Show matching brackets.
+set ignorecase	" Do case insensitive matching
+set smartcase	" Do smart case matching
+set incsearch	" Incremental search
+"set autowrite	" Automatically save before commands like :next and :make
+set hidden      " Hide buffers when they are abandoned
+set mouse=a		" Enable mouse usage (all modes) in terminals
+set ruler       " show the cursor position all the time
+set hlsearch    " Switch syntax highlighting on
+set autoread    " Auto load file when updated outside vim
+set guifont=Andale\ Mono\ 11
 
-" ----------------------------------------------------------------------------
-"  UI
-" ----------------------------------------------------------------------------
+"highlight Normal    guibg=grey90
+"highlight Cursor    guibg=Green guifg=NONE
+"highlight lCursor   guibg=Cyan guifg=NONE
+"highlight NonText   guibg=grey80
+"highlight Constant  gui=NONE guibg=grey95
+"highlight Special   gui=NONE guibg=grey95
+colorscheme desert256
 
-set ruler                  " show the cursor position all the time
-set noshowcmd              " don't display incomplete commands
-set nolazyredraw           " turn off lazy redraw
-set number                 " line numbers
-set wildmenu               " turn on wild menu
-set wildmode=list:longest,full
-set ch=2                   " command line height
-set backspace=2            " allow backspacing over everything in insert mode
-set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
-set shortmess=filtIoOA     " shorten messages
-set report=0               " tell us about changes
-set nostartofline          " don't jump to the start of line when scrolling
+set mousehide	" Hide the mouse when typing text
+set noerrorbells
+set novisualbell
 
+set expandtab
+set shiftwidth=2
+set tabstop=2
 
-" ----------------------------------------------------------------------------
-" Visual Cues
-" ----------------------------------------------------------------------------
+set nowrap
 
-set showmatch              " brackets/braces that is
-set mat=5                  " duration to show matching brace (1/10 sec)
-set incsearch              " do incremental searching
-set laststatus=2           " always show the status line
-set ignorecase             " ignore case when searching
-set nohlsearch             " don't highlight searches
-set visualbell             " shut the fuck up
+" cycle windows using Alt-arrows
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
 
+" cycle buffern using Ctrl-N and Ctrl-P
+nmap <silent> <C-N> :bn <CR>
+nmap <silent> <C-P> :bp <CR>
 
-" ---------------------------------------------------------------------------
-"  Strip all trailing whitespace in file
-" ---------------------------------------------------------------------------
+" make search results appear in the middle of the screen
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
 
-function! StripWhitespace ()
-    exec ':%s/ \+$//gc'
-endfunction
-map ,s :call StripWhitespace ()<CR>
+" F2 to turn toggle search highlighting
+map <F2> :set hlsearch!<CR>
+imap <F2> <ESC>:set hlsearch!<CR>a
+
+if has("multi_byte")
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  " set bomb
+  set termencoding=utf-8
+  set fileencodings=utf-8,iso-8859-1,iso-8859-3
+else
+  echoerr "Sorry, this version of (g)vim was not compiled with +multi_byte"
+endif
+
+" Activate git commit syntax highlighting
+if has("autocmd")
+  autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
+endif
+
+" Make the unnamed clipboard match the X clipboard
+set clipboard=unnamedplus
+
+" Highlight redundant whitespace and tabs.
+highlight RedundantWhitespace ctermbg=red guibg=red
+match RedundantWhitespace /\s\+$\| \+\ze\t/
+
+" Typos
+map                :W :w
+map                :WQ :wq
+map                :Wq :wq
+map                :Q :q
+
+" Replace word and paste
+map di Pl"Xdeb
+
+" Source a global configuration file if available
+" XXX Deprecated, please move your changes here in /etc/vim/vimrc
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
+
+:set noswapfile
+
+:set guioptions-=T  "remove toolbar
+
+" Smart way to move btw. windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+""""""""""""""""""""""""""""""
+" => Minibuffer plugin
+""""""""""""""""""""""""""""""
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplorerMoreThanOne = 2
+"let g:miniBufExplModSelTarget = 0
+"let g:miniBufExplUseSingleClick = 1
+"let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplSplitBelow=1
+
+let g:bufExplorerSortBy = "name"
+
+set wildmenu
+
+" clean whitespaces at end of line
+map cleanws :%s/\s\+$//g<CR>
+
+" insert encoding: utf-8 at beginning of file
+map <C-u>tf ggO#encoding: utf-8<ESC>`'
+
+"set fdm=syntax
+
+""improve autocomplete menu color
+highlight Pmenu ctermbg=238 ctermfg=black gui=bold guibg=red
+
+" rabl colorizer
+au BufRead,BufNewFile *.rabl setf ruby

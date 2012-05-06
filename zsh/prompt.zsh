@@ -45,7 +45,12 @@ rb_prompt(){
   then
 	  echo "%{$fg_bold[yellow]%}$(rbenv version | awk '{print $1}')%{$reset_color%}"
 	else
-	  echo ""
+    if $(which rvm-prompt &> /dev/null)
+    then
+	    echo "%{$fg_bold[yellow]%}$(rvm-prompt)%{$reset_color%}"
+    else
+      echo ""
+    fi
   fi
 }
 

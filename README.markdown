@@ -3,7 +3,7 @@
 ## dotfiles
 
 Your dotfiles are how you personalize your system. These are mine. The very
-prejudiced mix: OS X, zsh, Ruby, Rails, git, homebrew, rbenv, vim. If you
+prejudiced mix: Ubuntu, zsh, Ruby, Rails, git, rvm, vim. If you
 match up along most of those lines, you may dig my dotfiles.
 
 I was a little tired of having long alias files and everything strewn about
@@ -18,7 +18,7 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
 ## install
 
-- `git clone git://github.com/holman/dotfiles ~/.dotfiles`
+- `git clone git://github.com/nberger/dotfiles ~/.dotfiles`
 - `cd ~/.dotfiles`
 - `rake install`
 

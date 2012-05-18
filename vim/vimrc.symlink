@@ -112,7 +112,9 @@ if has("autocmd")
 endif
 
 " Make the unnamed clipboard match the X clipboard
-set clipboard=unnamedplus
+if has("unnamedplus")
+  set clipboard=unnamedplus
+endif
 
 " Highlight redundant whitespace and tabs.
 highlight RedundantWhitespace ctermbg=red guibg=red

@@ -55,6 +55,7 @@ set ruler       " show the cursor position all the time
 set hlsearch    " Switch syntax highlighting on
 set autoread    " Auto load file when updated outside vim
 set guifont=Andale\ Mono\ 11
+set number
 
 "highlight Normal    guibg=grey90
 "highlight Cursor    guibg=Green guifg=NONE

@@ -173,3 +173,10 @@ highlight Pmenu ctermbg=238 ctermfg=black gui=bold guibg=red
 
 " rabl colorizer
 au BufRead,BufNewFile *.rabl setf ruby
+
+nnoremap <F1> <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
+
+" global substitute by default
+set gdefault

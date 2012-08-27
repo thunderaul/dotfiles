@@ -17,6 +17,7 @@
         rank-contributers = !$ZSH/bin/git-rank-contributers
         count   = !git shortlog -sn
         unstage = reset HEAD
+        wdiff   = diff --color-words
 [color]
         diff = auto
         status = auto

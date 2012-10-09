@@ -1,0 +1,59 @@
+############################################################################
+############################################################################
+# Reset Prefix
+############################################################################
+set -g prefix C-a
+bind-key a send-prefix # for nested tmux sessions
+
+############################################################################
+# Global options
+############################################################################
+# large history
+set-option -g history-limit 10000
+
+# colors
+setw -g mode-bg black
+set-option -g default-terminal "screen-256color" #"xterm-256color" # "screen-256color"
+set-option -g pane-active-border-fg green
+
+# Automatically set window title
+setw -g automatic-rename
+
+set -g base-index 1
+#set -s escape-time 0
+setw -g aggressive-resize on
+
+# Highlight active window
+set-window-option -g window-status-current-bg red
+
+unbind %
+bind | split-window -h
+bind '-' split-window -v
+
+# use mouse
+setw -g mode-mouse on
+
+# utf8 support
+set-window-option -g utf8 on
+
+# reload tmux conf
+bind-key r source-file ~/.tmux.conf
+
+############################################################################
+# panes
+############################################################################
+# Navigation ---------------------------------------------------------------
+# use the vim motion keys to move between panes
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+# Resizing ---------------------------------------------------------------
+bind-key C-h resize-pane -L
+bind-key C-j resize-pane -D
+bind-key C-k resize-pane -U
+bind-key C-l resize-pane -R
+
+# use vim motion keys while in copy mode
+setw -g mode-keys vi

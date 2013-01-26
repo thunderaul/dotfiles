@@ -180,3 +180,5 @@ nnoremap K <nop>
 
 " global substitute by default
 set gdefault
+
+colorscheme desert

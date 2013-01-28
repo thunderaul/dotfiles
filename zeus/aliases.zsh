@@ -1,0 +1,5 @@
+alias zs='zeus server'
+alias zc='zeus console'
+alias zr='zeus rake'
+alias zspec='zeus rspec'
+alias zg='zeus generate'

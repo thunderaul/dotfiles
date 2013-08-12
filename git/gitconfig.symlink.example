@@ -18,6 +18,8 @@
         count   = !git shortlog -sn
         unstage = reset HEAD
         wdiff   = diff --color-words
+        delete-local-merged = !$ZSH/bin/git-delete-local-merged
+        no-merged = branch --no-merged
 [color]
         diff = auto
         status = auto

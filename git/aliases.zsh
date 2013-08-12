@@ -19,3 +19,6 @@ alias gb='git branch'
 alias st='git status -sb'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias gg='git grep'
+
+alias promote='git promote'
+alias preq='git pull-request -m'

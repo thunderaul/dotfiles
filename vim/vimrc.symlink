@@ -46,6 +46,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'gregsexton/gitv'
 Bundle 'tpope/vim-rails'
 Bundle 'scrooloose/nerdtree'
+Bundle 'fholgado/minibufexpl.vim'
 
 " Uncomment the following to have Vim load indentation rules according to the
 " detected filetype. Per default Debian Vim only load filetype specific

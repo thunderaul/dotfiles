@@ -44,5 +44,34 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+alias gitka='gitk --all &'
+alias gg='git grep'
+alias l='ls -CF'
+alias st='git status'
+alias gap='git add -p'
+alias scu='bundle exec script/cucumber'
+alias sc='bundle exec script/console'
+alias sr='bundle exec script/restart.rb'
+alias scs='bundle exec script/server --debugger'
+alias r='rails'
+alias reassbackup='bundle exec script/dbconsole -p < db/production_data.sql'
+alias reassbackup_staging='bundle exec script/dbconsole -p < db/staging_data.sql'
+alias reassbackupr3='bundle exec rails dbconsole -p < db/production_data.sql'
+alias reassbackup_db_tcmax='bundle exec script/dbconsole -p < ../backup_db_local_by_alias.sql'
+alias backup_db_tcmax='mysqldump -u dbuser -p tcmax_dev > ../backup_db_local_by_alias.sql'
+alias backup_db_analytracker='mysqldump -u dbuser -p analytracker_dev > ../backup_db_local_by_alias.sql'
+alias backup_db_ledanalytics='mysqldump -u dbuser -p ledanalytics_dev > ../backup_db_local_by_alias.sql'
+alias bue='bundle exec'
+alias gl='git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
+alias gf='git diff'
+alias brm='bundle exec rake db:migrate'
+alias brt='bundle exec rake db:test:prepare'
+alias brmt='bundle exec rake db:migrate db:test:prepare'
+alias gd='git diff'
+alias gco='git checkout'
+alias gitcount='git shortlog -sn'
+alias skype2='skype --dbpath=~/.Skype2 &'
+alias pull-request-b='hub promote && hub pull-request'
+
 # Customize to your needs...
 export PATH=$PATH:/home/thunder/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/var/lib/gems/1.8/bin:/usr/lib/gems/1.8/bin:/var/lib/gems/1.8/gems/radiant-0.8.1/bin:/home/thunder/.rvm/bin

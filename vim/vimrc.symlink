@@ -61,7 +61,6 @@ if has("autocmd")
   filetype plugin on
 endif
 
-
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
@@ -167,6 +166,15 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+nmap <silent> <C-S-Left> 10<
+nmap <silent> <C-S-Right> 10>
+nmap <silent> <C-S-Down> 10-
+nmap <silent> <C-S-Up> 10+
+nmap <silent> <C-Left> <
+nmap <silent> <C-Right> >
+nmap <silent> <C-Up> -
+nmap <silent> <C-Down> +
+
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
 """"""""""""""""""""""""""""""
@@ -201,5 +209,3 @@ nnoremap K <nop>
 
 " global substitute by default
 set gdefault
-
-colorscheme desert
